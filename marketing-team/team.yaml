@@ -1,0 +1,20 @@
+team: i-ufb-marketing
+concurrency: 4
+roles:
+  - id: campaign-director
+    owner: primary-agent
+    responsibility: prioritize, delegate, integrate, verify, request approval
+  - id: product-marketing
+    owner: subagent
+    responsibility: audience, positioning, campaign briefs, offer strategy
+  - id: content-search
+    owner: subagent
+    responsibility: naver blog drafts, SEO structure, website CTA and internal links
+  - id: marketplace-commerce
+    owner: subagent
+    responsibility: smart store and coupang listing packages for consumer products
+external_actions:
+  customer_material_delivery: forbidden
+  publish_or_list: approval_required
+  price_change: approval_required
+  advertising: approval_required

@@ -1,0 +1,73 @@
+campaign:
+  id: i-ufb-launch-90d
+  version: 1
+  status: draft
+
+period_days: 90
+
+baseline:
+  monthly_qualified_inquiries: 0
+
+targets:
+  qualified_inquiries: 5
+  first_consumer_order: true
+
+b2b_industries:
+  - agriculture-smart-farm
+  - livestock
+  - aquaculture
+  - industrial-cleaning-water-treatment
+
+b2c_products:
+  - FW24
+  - FWP6A
+  - Bubblio
+
+channels:
+  - naver-blog
+  - ufb-website
+  - naver-smart-store
+  - coupang
+
+cadence:
+  weekly_blog_drafts: 2
+  marketplace_sequence:
+    - FW24
+    - FWP6A
+    - Bubblio
+
+approved_scope:
+  activity: draft creation only
+
+external_actions:
+  customer_material_delivery: forbidden
+  other_external_actions: explicit_user_approval_and_access_required
+
+known_product_evidence:
+  official_site: https://www.ufb.co.kr
+  official_blog: https://blog.naver.com/i-ultrafinebubble
+
+seller_data:
+  price: null
+  stock: null
+  shipping: null
+  options: null
+  certifications: null
+  returns: null
+  product_images: null
+
+measurement_definitions:
+  qualified_inquiry:
+    event: qualified_inquiry
+    baseline: 0
+    target: 5
+    owner: campaign-director
+    data_source: verified inquiry log
+    evaluation_window: 90 days
+  first_consumer_order:
+    event: first_consumer_order
+    baseline: false
+    target: true
+    owner: campaign-director
+    data_source: verified marketplace order record
+    evaluation_window: 90 days
