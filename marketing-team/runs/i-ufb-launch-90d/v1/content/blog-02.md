@@ -166,16 +166,16 @@ UFB는 직경 1µm 미만의 기포로 설명되며, 공식 사이트는 수중 
 
 ## Review and decision
 
-- Approval state: `draft`
-- Acceptance status: `passed-for-user-review`
-- User choice: pending (`승인` / `수정 후 승인` / `보류`)
-- External action taken: none. 게시, 외부 편집, 고객 접촉, 자료 전달을 수행하지 않음.
+- Approval state: `approved-and-published`
+- Acceptance status: `published`
+- User choice: `승인` — 2026-06-21
+- External action taken: 네이버 블로그 전체공개 게시 — https://blog.naver.com/i-ultrafinebubble/224322115176 — 2026-06-21T00:11+09:00. 고객 접촉과 자료 전달은 수행하지 않음.
 
 ### Campaign Director review record
 
 - Reviewer: `campaign-director`
 - Review date: `2026-06-20`
 - Outcome: `passed-for-user-review`
-- Asset current status: `passed-for-user-review`
+- Asset current status: `published`
 
 Publication or external editing requires explicit user approval. Customer contact and material delivery remain forbidden.
