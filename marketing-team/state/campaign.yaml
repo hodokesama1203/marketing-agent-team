@@ -37,8 +37,8 @@ cadence:
     - Bubblio
 
 execution:
-  first_external_publication_at: '2026-06-21T00:11:27+09:00'
-  measurement_window_started_at: '2026-06-21T00:11:27+09:00'
+  first_external_publication_at: '2026-06-21T00:10:00+09:00'
+  measurement_window_started_at: '2026-06-21T00:10:00+09:00'
   published_blog_posts: 2
 
 approved_scope:
