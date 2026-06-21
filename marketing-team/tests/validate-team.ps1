@@ -102,11 +102,14 @@ Assert-Contains $readme '(?i)customer contact and material delivery are permanen
 Assert-Contains $readme '(?i)only approved outputs move to separately authorized external execution' 'README must separate approval from external-execution authorization'
 
 $campaign = Get-Content -Raw -Encoding UTF8 (Join-Path $root 'state/campaign.yaml')
-$expectedTopKeys = @('campaign', 'period_days', 'baseline', 'targets', 'b2b_industries', 'b2c_products', 'channels', 'cadence', 'approved_scope', 'external_actions', 'known_product_evidence', 'seller_data', 'measurement_definitions')
+$requiredTopKeys = @('campaign', 'period_days', 'baseline', 'targets', 'b2b_industries', 'b2c_products', 'channels', 'cadence', 'approved_scope', 'external_actions', 'known_product_evidence', 'seller_data', 'measurement_definitions')
+$optionalTopKeys = @('execution')
+$allowedTopKeys = @($requiredTopKeys + $optionalTopKeys)
 $actualTopKeys = @([regex]::Matches($campaign, '(?m)^(?<key>[A-Za-z_][A-Za-z0-9_-]*):') | ForEach-Object { $_.Groups['key'].Value })
-$actualTopKeyString = (($actualTopKeys | Sort-Object) -join ',')
-$expectedTopKeyString = (($expectedTopKeys | Sort-Object) -join ',')
-if ($actualTopKeyString -cne $expectedTopKeyString) {
+$missingTopKeys = @($requiredTopKeys | Where-Object { $actualTopKeys -cnotcontains $_ })
+$unexpectedTopKeys = @($actualTopKeys | Where-Object { $allowedTopKeys -cnotcontains $_ })
+$duplicateTopKeys = @($actualTopKeys | Group-Object | Where-Object { $_.Count -ne 1 })
+if ($missingTopKeys.Count -ne 0 -or $unexpectedTopKeys.Count -ne 0 -or $duplicateTopKeys.Count -ne 0) {
   throw 'Campaign YAML top-level keys are missing, misplaced, or unexpected'
 }
 Assert-Contains $campaign '(?m)^period_days: 90[ \t]*\r?$' 'Missing exact top-level campaign key: period_days: 90'
@@ -129,6 +132,22 @@ $cadence = Get-TopLevelSection $campaign 'cadence'
 Assert-Contains $cadence '(?m)^  weekly_blog_drafts: 2[ \t]*\r?$' 'Missing or invalid cadence.weekly_blog_drafts'
 Assert-Contains $cadence '(?m)^  marketplace_sequence:[ \t]*\r?$' 'Missing cadence.marketplace_sequence'
 Assert-ExactList $cadence @('FW24', 'FWP6A', 'Bubblio') 'cadence.marketplace_sequence' 4
+if ($actualTopKeys -ccontains 'execution') {
+  $executionMap = Get-DirectMap (Get-TopLevelSection $campaign 'execution')
+  if ($executionMap.Count -ne 3) {
+    throw 'execution must contain exactly first_external_publication_at, measurement_window_started_at, and published_blog_posts'
+  }
+  $timestampPattern = "^'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?[+-][0-9]{2}:[0-9]{2}'$"
+  if ($executionMap['first_external_publication_at'] -notmatch $timestampPattern) {
+    throw 'execution.first_external_publication_at must be a quoted ISO 8601 timestamp with offset'
+  }
+  if ($executionMap['measurement_window_started_at'] -cne $executionMap['first_external_publication_at']) {
+    throw 'execution.measurement_window_started_at must equal the first external publication timestamp'
+  }
+  if ($executionMap['published_blog_posts'] -notmatch '^[1-9][0-9]*$') {
+    throw 'execution.published_blog_posts must be a positive integer'
+  }
+}
 Assert-ExactDirectMap (Get-TopLevelSection $campaign 'approved_scope') @{ activity = 'draft creation only' } 'approved_scope'
 Assert-ExactDirectMap (Get-TopLevelSection $campaign 'external_actions') @{ customer_material_delivery = 'forbidden'; other_external_actions = 'explicit_user_approval_and_access_required' } 'external_actions'
 Assert-ExactDirectMap (Get-TopLevelSection $campaign 'known_product_evidence') @{ official_site = 'https://www.ufb.co.kr'; official_blog = 'https://blog.naver.com/i-ultrafinebubble' } 'known_product_evidence'
