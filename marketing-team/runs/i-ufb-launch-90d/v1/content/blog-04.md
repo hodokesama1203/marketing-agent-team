@@ -165,17 +165,17 @@ UFB는 직경 1µm 미만의 매우 작은 기포입니다. 공식 특성 페이
 
 ## Review and decision
 
-- Approval state: `draft`
-- Acceptance status: `pending-campaign-director-review`
-- User choice: pending
+- Approval state: `approved-and-published`
+- Acceptance status: `published`
+- User choice: `승인` — 2026-06-21
 - Exact externally executable scope: none
-- External action taken: none; this package was not published and the website was not edited.
+- External action taken: 네이버 블로그 전체공개 게시 — https://blog.naver.com/i-ultrafinebubble/224322407694 — 2026-06-21T12:20+09:00. 홈페이지 수정, 고객 접촉과 자료 전달은 수행하지 않음.
 
 ### Campaign Director review record
 
 - Reviewer: `campaign-director`
 - Review date: pending
 - Outcome: pending
-- Asset current status: `draft`
+- Asset current status: `published`
 
 Publication or external editing requires explicit user approval. Customer contact and material delivery remain forbidden.

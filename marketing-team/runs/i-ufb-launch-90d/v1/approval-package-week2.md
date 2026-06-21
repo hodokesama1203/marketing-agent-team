@@ -6,14 +6,14 @@
 - Version: `v1-week2`
 - Prepared by: Campaign Director
 - Review outcome: `passed-for-user-review`
-- External actions taken for this package: none
+- External actions taken for this package: Blog 03·04 네이버 블로그 전체공개 게시
 
 ## Included assets
 
 | Asset | Purpose | Status |
 |---|---|---|
-| `content/blog-03.md` | 농업·스마트팜 관수 콘텐츠 | 게시 승인 대기 |
-| `content/blog-04.md` | 축산 음용수·악취 관리 콘텐츠 | 게시 승인 대기 |
+| `content/blog-03.md` | 농업·스마트팜 관수 콘텐츠 | 게시 완료 · 224322407234 |
+| `content/blog-04.md` | 축산 음용수·악취 관리 콘텐츠 | 게시 완료 · 224322407694 |
 | `website/inquiry-conversion-package.md` | 구조화 문의 폼과 CTA 구현 사양 | 구현 승인·사이트 접근 대기 |
 | `marketplace/FW24-seller-input-form.md` | FW24 판매 필수정보 수집 | 사용자 입력 대기 · `NO-GO` |
 
@@ -33,7 +33,7 @@
 
 ## Boundaries
 
-- Blog 03·04는 아직 게시되지 않았다.
+- Blog 03·04는 사용자 승인 후 전체공개·검색허용으로 게시됐다.
 - 홈페이지는 수정되지 않았다.
 - FW24 상품은 등록·가격 설정·광고되지 않았다.
 - 고객 접촉과 자료 전달은 영구 금지다.
@@ -43,8 +43,8 @@
 
 | Asset | 승인 | 수정 후 승인 | 보류 |
 |---|---|---|---|
-| Blog 03 — 농업·스마트팜 | ☐ | ☐ | ☐ |
-| Blog 04 — 축산 | ☐ | ☐ | ☐ |
+| Blog 03 — 농업·스마트팜 | ☑ | ☐ | ☐ |
+| Blog 04 — 축산 | ☑ | ☐ | ☐ |
 | 홈페이지 문의 전환 패키지 | ☐ | ☐ | ☐ |
 | FW24 판매정보 입력 진행 | ☐ | ☐ | ☐ |
 

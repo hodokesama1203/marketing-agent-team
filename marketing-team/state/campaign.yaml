@@ -39,7 +39,7 @@ cadence:
 execution:
   first_external_publication_at: '2026-06-21T00:10:00+09:00'
   measurement_window_started_at: '2026-06-21T00:10:00+09:00'
-  published_blog_posts: 2
+  published_blog_posts: 4
 
 approved_scope:
   activity: draft creation only
